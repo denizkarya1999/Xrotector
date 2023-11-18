@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrocter", "Xrocter.csproj", "{2A1C1AC3-6675-4D00-B420-6A0BE378AB9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A1C1AC3-6675-4D00-B420-6A0BE378AB9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A1C1AC3-6675-4D00-B420-6A0BE378AB9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A1C1AC3-6675-4D00-B420-6A0BE378AB9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A1C1AC3-6675-4D00-B420-6A0BE378AB9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB7420E6-A1D6-407E-9D0A-2D3386E2E059}
+	EndGlobalSection
+EndGlobal
