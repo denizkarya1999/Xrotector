@@ -14,4 +14,8 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = cis_476_project
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\deniz\OneDrive\Documents\For School\Homeworks\Homeworks\University\Junior Year\Junior - Fall 2023\CIS 476 - Software Architecture and Design Patterns\Term Project\
+=======
+build_property.ProjectDir = C:\Users\deniz\source\Project_Architecture\cis_476_project\
+>>>>>>> 0b62671 (Database Created)
