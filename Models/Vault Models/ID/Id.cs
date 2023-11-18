@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace cis_476_project.Models
+namespace Xrocter.Models
 {
     public class Id
     {

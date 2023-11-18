@@ -1,4 +1,4 @@
-﻿using cis_476_project.Models.Vault_Models.ID;
+﻿using Xrocter.Models.Vault_Models.ID;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace cis_476_project.Models
+namespace Xrocter.Models
 {
     public class UserAccount
     {

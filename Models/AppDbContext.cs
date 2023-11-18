@@ -1,4 +1,4 @@
-﻿using cis_476_project.Models.Vault_Models.ID;
+﻿using Xrocter.Models.Vault_Models.ID;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,8 +7,9 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Xrocter.Vault_Models.ID;
 
-namespace cis_476_project.Models
+namespace Xrocter.Models
 {
     public class AppDbContext : DbContext
     {

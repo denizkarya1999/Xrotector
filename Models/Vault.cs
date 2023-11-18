@@ -1,4 +1,4 @@
-﻿using cis_476_project.Models.Vault_Models.ID;
+﻿using Xrocter.Models.Vault_Models.ID;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,8 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xrocter.Vault_Models.ID;
 
-namespace cis_476_project.Models
+namespace Xrocter.Models
 {
     public class Vault
     {

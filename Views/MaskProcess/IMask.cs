@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace cis_476_project.Models.Vault_Models
+namespace Xrocter.Views.MaskProcess
 {
     public interface IMask
     {

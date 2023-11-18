@@ -4,8 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xrocter.Models;
 
-namespace cis_476_project.Models.Vault_Models.ID
+namespace Xrocter.Vault_Models.ID
 {
     public class DriversLicense : Id
     {
