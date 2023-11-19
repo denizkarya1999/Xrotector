@@ -39,6 +39,14 @@ namespace Xrocter.Models
         public DbSet<Passport>? Passports { get; set; }
         public DbSet<SSN>? SSNs { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=ProjectArchitecture;Trusted_Connection=True;");
+            }
+        }
+
         //Make connections and seed the data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
