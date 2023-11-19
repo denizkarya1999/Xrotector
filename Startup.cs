@@ -46,5 +46,25 @@ namespace Xrocter
             //Show message
             MessageBox.Show("The account has been successfully created", "Success");
         }
+
+        private async void login_Button_Click(object sender, EventArgs e)
+        {
+            string email = Email_Login_Textbox.Text;
+            string password = Password_Login_Textbox.Text;
+
+            //Use EFcore to login
+            using (var dbContext = new AppDbContext())
+            {
+                //Create a Central Controller instance
+                CentralController centralController = new CentralController(dbContext);
+
+                //Trigger the function
+                await centralController.Authenticate(email, password);
+            }
+
+            //Reset buttons
+            emailTextBox.Text = "";
+            passwordTextBox.Text = "";
+        }
     }
 }
