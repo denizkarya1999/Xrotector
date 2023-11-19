@@ -54,7 +54,8 @@ C:\Users\deniz\source\Project_Architecture\Xrocter\bin\Debug\net6.0-windows\runt
 C:\Users\deniz\source\Project_Architecture\Xrocter\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.Messages.dll
 C:\Users\deniz\source\Project_Architecture\Xrocter\bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net6.0-windows\Xrocter.csproj.AssemblyReference.cache
-C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net6.0-windows\Xrocter.Form1.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net6.0-windows\Xrocter.Properties.Resources.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net6.0-windows\Xrocter.Startup.resources
 C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net6.0-windows\Xrocter.csproj.GenerateResource.cache
 C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net6.0-windows\Xrocter.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net6.0-windows\Xrocter.AssemblyInfoInputs.cache

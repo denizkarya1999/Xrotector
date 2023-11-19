@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using System;
 using System.Windows.Forms;
 using Xrocter.Controllers;
@@ -14,28 +13,31 @@ namespace Xrocter
     {
         private static IServiceProvider _serviceProvider;
 
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        static void Main()
         {
             ApplicationConfiguration.Initialize();
 
             // Build the service provider
             _serviceProvider = ConfigureServices();
 
-            // Run the main form
-            Application.Run(_serviceProvider.GetRequiredService<Form1>());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            // Run the main form (MainForm as the startup form)
+            Application.Run(_serviceProvider.GetRequiredService<Startup>());
         }
 
         private static IServiceProvider ConfigureServices()
         {
             var services = new ServiceCollection();
 
-            // Register services and dependencies
+            // Register DbContext and other services
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=ProjectArchitecture;Trusted_Connection=True;"));
+                options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=ProjectArchitecture;Trusted_Connection=True;"),
+    ServiceLifetime.Scoped);
+
+            // Register other controllers and dependencies
             services.AddScoped<VaultController>();
             services.AddScoped<UserAccountController>();
             services.AddScoped<SecurityQuestionController>();
@@ -48,7 +50,7 @@ namespace Xrocter
             services.AddScoped<SSNController>();
 
             // Register your forms
-            services.AddScoped<Form1>(); // Replace Form1 with your main form
+            services.AddScoped<Startup>(); // Replace with your main form
 
             // Build the service provider
             return services.BuildServiceProvider();
