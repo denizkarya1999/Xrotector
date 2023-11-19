@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xrocter.Models;
+using Xrocter.Controllers.Processes;
+using Xrocter.Controllers.Processes.AuthenticationProcess;
 
 namespace Xrocter.Controllers
 {
@@ -53,5 +55,28 @@ namespace Xrocter.Controllers
             await user_Controller.AddUserAsync(newUserAccount);
         }
 
+        // Method to invoke authentication process
+        public async Task<UserAccount> Authenticate(string userEmail,string password)
+        {
+            // Create an instance of userAccountController
+            UserAccountController user_Controller = new UserAccountController(_dbContext);
+
+            // Generate a user account
+            UserAccount newUser = await user_Controller.GetUserByEmailAsync(userEmail);
+
+            // Generate a login session
+            Authenticator loginSession = Authenticator.generateLoginSession();
+
+            //If the login session is not null, invoke the login process
+            if (loginSession != null)
+            {
+                LoginApp.SignIn(loginSession, newUser, password);
+                return newUser;
+            } else {
+                MessageBox.Show("You are already logged in. Please sign out and try again.");
+                return null;
+            }
+            return null;
+        }
     }
 }

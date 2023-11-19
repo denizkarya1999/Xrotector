@@ -174,12 +174,14 @@
             login_Button.TabIndex = 10;
             login_Button.Text = "Sign In";
             login_Button.UseVisualStyleBackColor = false;
+            login_Button.Click += login_Button_Click;
             // 
             // Password_Login_Textbox
             // 
             Password_Login_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Password_Login_Textbox.Location = new Point(16, 119);
             Password_Login_Textbox.Name = "Password_Login_Textbox";
+            Password_Login_Textbox.PasswordChar = '*';
             Password_Login_Textbox.Size = new Size(242, 23);
             Password_Login_Textbox.TabIndex = 12;
             // 
@@ -241,7 +243,7 @@
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(93, 22);
             exitToolStripMenuItem.Text = "Exit";
             // 
             // Startup
