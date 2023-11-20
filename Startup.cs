@@ -66,5 +66,11 @@ namespace Xrocter
             emailTextBox.Text = "";
             passwordTextBox.Text = "";
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Close the program
+            this.Close();
+        }
     }
 }
