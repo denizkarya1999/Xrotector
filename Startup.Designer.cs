@@ -245,6 +245,7 @@
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             exitToolStripMenuItem.Size = new Size(93, 22);
             exitToolStripMenuItem.Text = "Exit";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // Startup
             // 
@@ -254,7 +255,8 @@
             Controls.Add(pictureBox1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "Startup";
             StartPosition = FormStartPosition.CenterScreen;

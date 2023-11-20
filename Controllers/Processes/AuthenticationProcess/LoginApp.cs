@@ -29,6 +29,9 @@ namespace Xrocter.Controllers.Processes.AuthenticationProcess
                 // Initialize classes
                 MainProgram mainProgram = new MainProgram();
 
+                // Pass the parameter
+                mainProgram.SetLoggedInUser(userAccount);
+
                 // Show a success message
                 MessageBox.Show("Login was successful.");
 

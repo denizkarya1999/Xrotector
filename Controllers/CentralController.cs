@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xrocter.Models;
 using Xrocter.Controllers.Processes;
 using Xrocter.Controllers.Processes.AuthenticationProcess;
+using Xrocter.Controllers.Processes.PasswordGenerationProcess;
 
 namespace Xrocter.Controllers
 {
@@ -76,7 +77,70 @@ namespace Xrocter.Controllers
                 MessageBox.Show("You are already logged in. Please sign out and try again.");
                 return null;
             }
-            return null;
+        }
+
+        // Method to invoke password building process
+        public async Task<UserAccount> BuildStrongPassword(Guid userAccountID, string typeOfPassword)
+        {
+            // Create an instance of userAccountController
+            UserAccountController user_Controller = new UserAccountController(_dbContext);
+
+            // Get the user by ID
+            UserAccount targetUser = await user_Controller.GetUserByIdAsync(userAccountID);
+
+            // Create an instance for PasswordMaster
+            PasswordMaster masterX = new PasswordMaster();
+
+            // Change the user`s password
+            if(typeOfPassword == "Personal")
+            {
+                // Generate an instance for Personal Password
+                PasswordBuilder newPersonalPassword = new PersonalPassword();
+
+                // Invoke builder process there
+                masterX.generatePassword(newPersonalPassword);
+
+                // Get the new password
+                string finalPassword = newPersonalPassword.GetPassword();
+
+                // Assign the new password
+                targetUser.Password = finalPassword;
+
+                // Update the password on database
+                await user_Controller.UpdateUserAsync(targetUser);
+
+                // Notify the user
+                MessageBox.Show("Your current password is: " + targetUser.Password);
+
+                return targetUser;
+            }
+            else if (typeOfPassword == "Enterprise")
+            {
+                // Generate an instance for Enterprise Password
+                PasswordBuilder newEnterprisePassword = new EnterprisePassword();
+
+                // Invoke builder process there
+                masterX.generatePassword(newEnterprisePassword);
+
+                // Get the new password
+                string finalPassword = newEnterprisePassword.GetPassword();
+
+                // Assign the new password
+                targetUser.Password = finalPassword;
+
+                // Update the password on database
+                await user_Controller.UpdateUserAsync(targetUser);
+
+                // Notify the user
+                MessageBox.Show("Your current password is: " + targetUser.Password);
+
+                return targetUser;
+            }
+            else
+            {
+                MessageBox.Show("This type of password cannot be generated");
+                return null;
+            }
         }
     }
 }
