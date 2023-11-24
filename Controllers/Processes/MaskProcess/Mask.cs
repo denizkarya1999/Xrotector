@@ -8,10 +8,11 @@ namespace Xrocter.Controllers.Processes.MaskProcess
 {
     public class Mask : IMask
     {
-        public bool mask;
+        public bool IsMasked { get; set; }
 
-        public Mask() { }
-        public bool MaskOn { get; set; }
-        public bool MaskOff { get; set; }
+        public Mask()
+        {
+            IsMasked = false; // Initialize the mask to off by default
+        }
     }
 }
