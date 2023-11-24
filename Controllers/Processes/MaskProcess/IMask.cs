@@ -8,7 +8,6 @@ namespace Xrocter.Controllers.Processes.MaskProcess
 {
     public interface IMask
     {
-        public bool MaskOn { get; set; }
-        public bool MaskOff { get; set; }
+        bool IsMasked { get; set; }
     }
 }
