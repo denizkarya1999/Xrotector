@@ -8,6 +8,8 @@ using Xrocter.Models;
 using Xrocter.Controllers.Processes;
 using Xrocter.Controllers.Processes.AuthenticationProcess;
 using Xrocter.Controllers.Processes.PasswordGenerationProcess;
+using Xrocter.Controllers.Processes.MaskProcess;
+using System.Windows.Forms;
 
 namespace Xrocter.Controllers
 {
@@ -139,6 +141,38 @@ namespace Xrocter.Controllers
             else
             {
                 MessageBox.Show("This type of password cannot be generated");
+                return null;
+            }
+        }
+
+        // Method to invoke masking process
+        public async Task<Vault> MaskProcess(Guid vaultID, bool userChoice)
+        {
+            // Create an instance of vault controller
+            VaultController vault_Controller = new VaultController(_dbContext);
+
+            // Get the vault by ID
+            Vault targetVault = await vault_Controller.GetVaultByIdAsync(vaultID);
+
+            // Create an instance of Mask
+            IMask processMask = new MaskProxy(userChoice);
+
+            // Assign the value using the program
+            targetVault.Mask = processMask.IsMasked;
+
+            // Update the mask on the database
+            await vault_Controller.UpdateVaultAsync(targetVault);
+
+            // Take actions based on the result of the process
+            if(targetVault.Mask == true)
+            {
+                // Show a message
+                MessageBox.Show("We successfully masked your vault. Your data is under our protection.");
+                return targetVault;
+            } else
+            {
+                // Show a message
+                MessageBox.Show("We successfully unmasked your vault. Please handle your data in care.");
                 return null;
             }
         }

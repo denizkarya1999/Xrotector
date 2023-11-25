@@ -30,21 +30,37 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainProgram));
             navigationPanel = new Panel();
+            maskButton = new Button();
             label1 = new Label();
             generatePasswordbutton = new Button();
             WelcomeLabel = new Label();
+            vaultLabel = new Label();
             navigationPanel.SuspendLayout();
             SuspendLayout();
             // 
             // navigationPanel
             // 
             navigationPanel.BackColor = Color.DarkRed;
+            navigationPanel.Controls.Add(maskButton);
             navigationPanel.Controls.Add(label1);
             navigationPanel.Controls.Add(generatePasswordbutton);
             navigationPanel.Location = new Point(-5, -6);
             navigationPanel.Name = "navigationPanel";
             navigationPanel.Size = new Size(178, 461);
             navigationPanel.TabIndex = 0;
+            // 
+            // maskButton
+            // 
+            maskButton.BackColor = Color.Red;
+            maskButton.BackgroundImageLayout = ImageLayout.None;
+            maskButton.ForeColor = SystemColors.ControlLightLight;
+            maskButton.Location = new Point(17, 91);
+            maskButton.Name = "maskButton";
+            maskButton.Size = new Size(147, 34);
+            maskButton.TabIndex = 2;
+            maskButton.Text = "Mask Vault";
+            maskButton.UseVisualStyleBackColor = false;
+            maskButton.Click += maskButton_Click;
             // 
             // label1
             // 
@@ -62,7 +78,7 @@
             generatePasswordbutton.BackColor = Color.Red;
             generatePasswordbutton.BackgroundImageLayout = ImageLayout.None;
             generatePasswordbutton.ForeColor = SystemColors.ControlLightLight;
-            generatePasswordbutton.Location = new Point(17, 42);
+            generatePasswordbutton.Location = new Point(17, 47);
             generatePasswordbutton.Name = "generatePasswordbutton";
             generatePasswordbutton.Size = new Size(147, 34);
             generatePasswordbutton.TabIndex = 0;
@@ -80,12 +96,22 @@
             WelcomeLabel.TabIndex = 1;
             WelcomeLabel.Text = "Welcome NULL";
             // 
+            // vaultLabel
+            // 
+            vaultLabel.AutoSize = true;
+            vaultLabel.Location = new Point(354, 155);
+            vaultLabel.Name = "vaultLabel";
+            vaultLabel.Size = new Size(38, 15);
+            vaultLabel.TabIndex = 2;
+            vaultLabel.Text = "label2";
+            // 
             // MainProgram
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(800, 450);
+            Controls.Add(vaultLabel);
             Controls.Add(WelcomeLabel);
             Controls.Add(navigationPanel);
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -106,5 +132,7 @@
         private Label label1;
         private Button generatePasswordbutton;
         private Label WelcomeLabel;
+        private Button maskButton;
+        private Label vaultLabel;
     }
 }

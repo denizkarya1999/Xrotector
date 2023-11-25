@@ -25,7 +25,7 @@ namespace Xrocter.Controllers
         }
 
         // Retrieve vault by ID asynchronously
-        public async Task<Vault> GetVaultByIdAsync(Guid id)
+        public async Task<Vault> GetVaultByIdAsync(Guid? id)
         {
             return await _appDBContext.Vaults.FindAsync(id);
         }

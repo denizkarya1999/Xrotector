@@ -12,7 +12,7 @@ namespace Xrocter.Controllers.Processes.MaskProcess
 
         public Mask()
         {
-            IsMasked = false; // Initialize the mask to off by default
+            IsMasked = true; // Initialize the mask to on by default
         }
     }
 }

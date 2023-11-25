@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xrocter.Models;
 
 namespace Xrocter.Controllers.Processes.MaskProcess
 {
     public class MaskProxy : IMask
     {
-        private Mask realMask;
-        private UserAccount user;
+        private Mask RealMask;
+        private bool Authorization;
 
-        public MaskProxy(UserAccount user)
+        public MaskProxy(bool authorization)
         {
-            this.realMask = new Mask();
-            this.user = user;
+            this.RealMask = new Mask();
+            this.Authorization = authorization;
         }
 
         public bool IsMasked
         {
             get
             {
-                if (user.IsAuthorized())
+                if (Authorization)
                 {
-                    return realMask.IsMasked;
+                    return RealMask.IsMasked;
                 }
                 else
                 {
@@ -34,9 +34,9 @@ namespace Xrocter.Controllers.Processes.MaskProcess
             }
             set
             {
-                if (user.IsAuthorized())
+                if (Authorization)
                 {
-                    realMask.IsMasked = value;
+                    RealMask.IsMasked = value;
                 }
                 else
                 {

@@ -30,7 +30,7 @@ namespace Xrocter.Controllers.Processes.AuthenticationProcess
                 MainProgram mainProgram = new MainProgram();
 
                 // Pass the parameter
-                mainProgram.SetLoggedInUser(userAccount);
+                mainProgram.SetLoggedInUserAsync(userAccount);
 
                 // Show a success message
                 MessageBox.Show("Login was successful.");
