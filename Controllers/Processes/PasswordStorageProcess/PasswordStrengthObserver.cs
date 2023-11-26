@@ -14,13 +14,12 @@ namespace Xrocter.Services.PasswordManagement
             _subject = subject;
             _name = name;
             _subject.Attach(this);
+            MessageBox.Show("Your password is weak, please create a master password.");
         }
 
         // Update method called when the observed subject changes its state.
         public void Update(string state)
         {
-            Console.WriteLine($"{_name}: PasswordStrengthObserver - State has changed to {state}");
-            // Additional logic for password strength can be implemented here.
         }
     }
 }

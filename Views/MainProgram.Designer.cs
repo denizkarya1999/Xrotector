@@ -30,16 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainProgram));
             navigationPanel = new Panel();
+            aboutLink = new LinkLabel();
             maskButton = new Button();
             label1 = new Label();
             generatePasswordbutton = new Button();
             WelcomeLabel = new Label();
+            pictureBox1 = new PictureBox();
             navigationPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // navigationPanel
             // 
             navigationPanel.BackColor = Color.DarkRed;
+            navigationPanel.Controls.Add(aboutLink);
             navigationPanel.Controls.Add(maskButton);
             navigationPanel.Controls.Add(label1);
             navigationPanel.Controls.Add(generatePasswordbutton);
@@ -47,6 +51,18 @@
             navigationPanel.Name = "navigationPanel";
             navigationPanel.Size = new Size(178, 461);
             navigationPanel.TabIndex = 0;
+            // 
+            // aboutLink
+            // 
+            aboutLink.AutoSize = true;
+            aboutLink.LinkColor = Color.White;
+            aboutLink.Location = new Point(44, 432);
+            aboutLink.Name = "aboutLink";
+            aboutLink.Size = new Size(81, 15);
+            aboutLink.TabIndex = 3;
+            aboutLink.TabStop = true;
+            aboutLink.Text = "About Xrocter";
+            aboutLink.LinkClicked += aboutLink_LinkClicked;
             // 
             // maskButton
             // 
@@ -95,22 +111,35 @@
             WelcomeLabel.TabIndex = 1;
             WelcomeLabel.Text = "Welcome NULL";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.Control;
+            pictureBox1.Image = Properties.Resources.png_transparent_under_construction_construction_sign_work_warning_symbol_yellow_repair_danger_under_thumbnail1;
+            pictureBox1.Location = new Point(258, 115);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(458, 246);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
             // MainProgram
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ButtonHighlight;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox1);
             Controls.Add(WelcomeLabel);
             Controls.Add(navigationPanel);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "MainProgram";
-            Text = "Xrocter - Home";
+            Text = "Xrocter 1.0 Beta - Home";
             Load += MainProgram_Load;
             navigationPanel.ResumeLayout(false);
             navigationPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -122,5 +151,7 @@
         private Button generatePasswordbutton;
         private Label WelcomeLabel;
         private Button maskButton;
+        private LinkLabel aboutLink;
+        private PictureBox pictureBox1;
     }
 }

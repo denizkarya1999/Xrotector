@@ -14,13 +14,12 @@ namespace Xrocter.Services.PasswordManagement
             _subject = subject;
             _name = name;
             _subject.Attach(this);
+            MessageBox.Show("At least one of your items are about to expire or not initialized. Please renew or add your item(s).");
         }
 
         // Update method called when the observed subject changes its state.
         public void Update(string state)
         {
-            Console.WriteLine($"{_name}: ExpirationObserver - State has changed to {state}");
-            // Additional logic for expiration tracking can be implemented here.
         }
     }
 }

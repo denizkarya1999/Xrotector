@@ -5,12 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xrocter.Models;
+using Xrocter.Controllers.VaultControllers;
+using Xrocter.Controllers.VaultControllers.IDControllers;
 using Xrocter.Controllers.Processes;
 using Xrocter.Controllers.Processes.AuthenticationProcess;
 using Xrocter.Controllers.Processes.PasswordGenerationProcess;
 using Xrocter.Controllers.Processes.MaskProcess;
 using System.Windows.Forms;
 using Xrocter.Controllers.Processes.PasswordRecoveryProcess;
+using Xrocter.Services.PasswordManagement;
+using Xrocter.Vault_Models.ID;
+using Xrocter.Models.Vault_Models.ID;
 
 namespace Xrocter.Controllers
 {
@@ -33,7 +38,8 @@ namespace Xrocter.Controllers
             Guid VAID = Guid.NewGuid();
 
             // Create a user account and a vault
-            UserAccount newUserAccount = new UserAccount() {
+            UserAccount newUserAccount = new UserAccount()
+            {
                 UserId = UAID,
                 Name = FirstName,
                 Surname = LastName,
@@ -60,7 +66,7 @@ namespace Xrocter.Controllers
         }
 
         // Method to invoke authentication process
-        public async Task<UserAccount> Authenticate(string userEmail,string password)
+        public async Task<UserAccount> Authenticate(string userEmail, string password)
         {
             // Create an instance of userAccountController
             UserAccountController user_Controller = new UserAccountController(_dbContext);
@@ -76,7 +82,9 @@ namespace Xrocter.Controllers
             {
                 LoginApp.SignIn(loginSession, newUser, password);
                 return newUser;
-            } else {
+            }
+            else
+            {
                 MessageBox.Show("You are already logged in. Please sign out and try again.");
                 return null;
             }
@@ -95,7 +103,7 @@ namespace Xrocter.Controllers
             PasswordMaster masterX = new PasswordMaster();
 
             // Change the user`s password
-            if(typeOfPassword == "Personal")
+            if (typeOfPassword == "Personal")
             {
                 // Generate an instance for Personal Password
                 PasswordBuilder newPersonalPassword = new PersonalPassword();
@@ -165,12 +173,13 @@ namespace Xrocter.Controllers
             await vault_Controller.UpdateVaultAsync(targetVault);
 
             // Take actions based on the result of the process
-            if(targetVault.Mask == true)
+            if (targetVault.Mask == true)
             {
                 // Show a message
                 MessageBox.Show("We successfully masked your vault. Your data is under our protection.");
                 return targetVault;
-            } else
+            }
+            else
             {
                 // Show a message
                 MessageBox.Show("We successfully unmasked your vault. Please handle your data in care.");
@@ -222,8 +231,146 @@ namespace Xrocter.Controllers
                     MessageBox.Show("Unfortunately we cannot reset your password. Please create another account.");
                 }
             }
-
             return null;
+        }
+
+        // Method to perform Password Storage Process
+        public async Task<Vault> PasswordStorageProcess(Guid userAccountID, Guid vaultID)
+        {
+            // Create an instance of userAccountController
+            UserAccountController user_Controller = new UserAccountController(_dbContext);
+
+            // Get the user by ID
+            UserAccount targetUser = await user_Controller.GetUserByIdAsync(userAccountID);
+
+            // Create an instance of vault controller
+            VaultController vault_Controller = new VaultController(_dbContext);
+
+            // Get the vault by ID
+            Vault targetVault = await vault_Controller.GetVaultByIdAsync(vaultID);
+
+            // Create controller instances for Drivers License, Passport, SSN and Credit Card
+            DriversLicenseController driversLicenseController = new DriversLicenseController(_dbContext);
+            PassportController passportController = new PassportController(_dbContext);
+            SSNController sSNController = new SSNController(_dbContext);
+            CreditCardController creditCardController = new CreditCardController(_dbContext);
+
+            // Initialize specific components (Drivers License, Passport, SSN and Credit Card)
+            DriversLicense? driversLicense = await driversLicenseController.GetDriversLicenseByVaultIdAsync(vaultID);
+            Passport? passport = await passportController.GetPassportByVaultIdAsync(vaultID);
+            SSN? ssn = await sSNController.GetSSNbyVaultIdAsync(vaultID);
+            CreditCard? creditCard = await creditCardController.GetCreditCardByVaultIdAsync(vaultID);
+
+            // Check instances of the expiration dates
+            DateTime currentDate = DateTime.Today;
+            bool? driversLicenseExpirationDate = IsExpirationValid(driversLicense?.ExpiryDate, currentDate);
+            bool? passportExpiryDate = IsExpirationValid(passport?.ExpiryDate, currentDate);
+            bool? ssnExpiryDate = IsExpirationValid(ssn?.ExpiryDate, currentDate);
+            bool? creditCardExpiryDate = IsExpirationValid(creditCard?.ExpiryDate, currentDate);
+
+            // Create a general subject instance
+            var Subject = new ConcreteSubject<string>();
+
+            // If the password is weak notify the user
+            if (IsWeakPassword(targetUser.Password))
+            {
+                // Create an instance of PasswordStrengthObserver and attach it to the subject
+                var passwordObserver = new PasswordStrengthObserver(Subject, "PasswordObserver");
+
+                //Attach the observer
+                Subject.Attach(passwordObserver);
+
+                // Change the state of the subject (password strength)
+                Subject.State = "Weak";
+
+                // Update the observer
+                passwordObserver.Update(Subject.State);
+
+                // Detach the observer
+                Subject.Detach(passwordObserver);
+            }
+
+            // Check if any of the expiration dates are null or false
+            if ((driversLicenseExpirationDate ?? false) == false ||
+                (passportExpiryDate ?? false) == false ||
+                (ssnExpiryDate ?? false) == false ||
+                (creditCardExpiryDate ?? false) == false) { 
+                // Create an instance of ExpirationObserver and attach it to the subject
+                var expirationObserver = new ExpirationObserver(Subject, "ExpirationObserver");
+
+                // Attach the observer
+                Subject.Attach(expirationObserver);
+
+                // Change the state of the subject (password strength)
+                Subject.State = "About to expire or not initialized";
+
+                // Update the observer
+                expirationObserver.Update(Subject.State);
+
+                // Detach the observer
+                Subject.Detach(expirationObserver);
+            }
+            return null;
+        }
+
+        public bool IsWeakPassword(string password)
+        {
+            // Check length
+            if (password.Length < 8)
+            {
+                return true; // Password is too short
+            }
+
+            // Check complexity (e.g., presence of uppercase, lowercase, digits, and special characters)
+            bool hasUpperCase = false;
+            bool hasLowerCase = false;
+            bool hasDigit = false;
+            bool hasSpecialChar = false;
+
+            foreach (char c in password)
+            {
+                if (char.IsUpper(c))
+                {
+                    hasUpperCase = true;
+                }
+                else if (char.IsLower(c))
+                {
+                    hasLowerCase = true;
+                }
+                else if (char.IsDigit(c))
+                {
+                    hasDigit = true;
+                }
+                else if (char.IsSymbol(c) || char.IsPunctuation(c))
+                {
+                    hasSpecialChar = true;
+                }
+            }
+
+            // Check if all required types of characters are present
+            if (!(hasUpperCase && hasLowerCase && hasDigit && hasSpecialChar))
+            {
+                return true; // Password lacks required complexity
+            }
+
+            // Password is considered strong if it passes the above criteria
+            return false;
+        }
+
+        // Method to check expiration dates
+        public bool IsExpirationValid(DateTime? expirationDate, DateTime currentDate)
+        {
+            if (expirationDate == null)
+            {
+                // If expiration date is null, it's considered invalid
+                return false;
+            }
+
+            // Calculate the difference in months between the two dates
+            int monthsDifference = ((expirationDate.Value.Year - currentDate.Year) * 12) + expirationDate.Value.Month - currentDate.Month;
+
+            // Check if the difference is greater than or equal to 6 months
+            return monthsDifference >= 6;
         }
     }
 }

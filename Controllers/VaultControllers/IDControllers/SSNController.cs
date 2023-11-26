@@ -31,8 +31,14 @@ namespace Xrocter.Controllers.VaultControllers.IDControllers
             return await _appDBContext.SSNs.FindAsync(id);
         }
 
-        // Add a new SSN asynchronously
-        public async Task<bool> AddSSNAsync(SSN ssn)
+        // Retrieve information by Social Security Number using VaultId asynchronously
+        public async Task<SSN> GetSSNbyVaultIdAsync(Guid vaultId)
+        {
+            return await _appDBContext.SSNs.FirstOrDefaultAsync(ssn => ssn.VaultId == vaultId);
+        }
+
+            // Add a new SSN asynchronously
+            public async Task<bool> AddSSNAsync(SSN ssn)
         {
             await _appDBContext.SSNs.AddAsync(ssn);
             await _appDBContext.SaveChangesAsync();

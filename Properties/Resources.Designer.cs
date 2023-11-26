@@ -69,5 +69,27 @@ namespace Xrocter.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_transparent_under_construction_construction_sign_work_warning_symbol_yellow_repair_danger_under_thumbnail {
+            get {
+                object obj = ResourceManager.GetObject("png-transparent-under-construction-construction-sign-work-warning-symbol-yellow-r" +
+                        "epair-danger-under-thumbnail", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_transparent_under_construction_construction_sign_work_warning_symbol_yellow_repair_danger_under_thumbnail1 {
+            get {
+                object obj = ResourceManager.GetObject("png-transparent-under-construction-construction-sign-work-warning-symbol-yellow-r" +
+                        "epair-danger-under-thumbnail1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

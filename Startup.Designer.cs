@@ -50,6 +50,8 @@
             toolStrip1 = new ToolStrip();
             toolStripDropDownButton1 = new ToolStripSplitButton();
             exitToolStripMenuItem = new ToolStripMenuItem();
+            help = new ToolStripDropDownButton();
+            aboutToolStripMenuItem = new ToolStripMenuItem();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -235,7 +237,7 @@
             // toolStrip1
             // 
             toolStrip1.BackColor = SystemColors.ControlLight;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1, help });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.ShowItemToolTips = false;
@@ -247,7 +249,6 @@
             // 
             toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
-            toolStripDropDownButton1.Image = (Image)resources.GetObject("toolStripDropDownButton1.Image");
             toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
             toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             toolStripDropDownButton1.Size = new Size(41, 22);
@@ -259,6 +260,23 @@
             exitToolStripMenuItem.Size = new Size(93, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+            // 
+            // help
+            // 
+            help.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            help.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
+            help.Image = (Image)resources.GetObject("help.Image");
+            help.ImageTransparentColor = Color.Magenta;
+            help.Name = "help";
+            help.Size = new Size(45, 22);
+            help.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            aboutToolStripMenuItem.Size = new Size(107, 22);
+            aboutToolStripMenuItem.Text = "About";
+            aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
             // Startup
             // 
@@ -273,7 +291,7 @@
             MaximizeBox = false;
             Name = "Startup";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Xrocter";
+            Text = "Xrocter 1.0 Beta";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -307,5 +325,7 @@
         private ToolStripSplitButton toolStripDropDownButton1;
         private ToolStripMenuItem exitToolStripMenuItem;
         private LinkLabel PasswordRecoveryLink;
+        private ToolStripDropDownButton help;
+        private ToolStripMenuItem aboutToolStripMenuItem;
     }
 }

@@ -32,9 +32,19 @@ namespace Xrocter.Views
             InitializeComponent();
         }
 
-        private void MainProgram_Load(object sender, EventArgs e)
+        private async void MainProgram_Load(object sender, EventArgs e)
         {
             WelcomeLabel.Text = "Welcome " + loggedInUser.Name;
+
+            //Upon load, login to EF Core
+            using (var dbContext = new AppDbContext())
+            {
+                //Create a Central Controller instance
+                CentralController centralController = new CentralController(dbContext);
+
+                //Call the storage management to detect any expiry date problems
+                await centralController.PasswordStorageProcess(loggedInUser.UserId, loggedInUserVault.VaultId);
+            }
         }
 
         //Mask button setup
@@ -100,6 +110,14 @@ namespace Xrocter.Views
                 //Setup the button
                 MaskButtonSetup(loggedInUser);
             }
+        }
+
+        private void aboutLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string creators = "Creators: Deniz, Mohammad, Yahya";
+            string version = "Version: 1.0 Beta";
+
+            MessageBox.Show($"{creators}\n{version}", "About Xrocter", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

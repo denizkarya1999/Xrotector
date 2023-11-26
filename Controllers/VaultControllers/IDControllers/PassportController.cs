@@ -31,6 +31,12 @@ namespace Xrocter.Controllers.VaultControllers.IDControllers
             return await _appDBContext.Passports.FindAsync(id);
         }
 
+        // Retrieve passport by VaultId asynchronously
+        public async Task<Passport> GetPassportByVaultIdAsync(Guid vaultId)
+        {
+            return await _appDBContext.Passports.FirstOrDefaultAsync(p => p.VaultId == vaultId);
+        }
+
         // Add a new passport asynchronously
         public async Task<bool> AddPassportAsync(Passport passport)
         {

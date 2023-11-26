@@ -99,5 +99,13 @@ namespace Xrocter
                 passwordRecovery.Show();
             }
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string creators = "Creators: Deniz, Mohammad, Yahya";
+            string version = "Version: 1.0 Beta";
+
+            MessageBox.Show($"{creators}\n{version}", "About Xrocter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

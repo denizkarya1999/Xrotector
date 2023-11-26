@@ -30,6 +30,12 @@ namespace Xrocter.Controllers.VaultControllers
             return await _appDBContext.CreditCards.FindAsync(cardNumber);
         }
 
+        // Retrieve credit card by its associated vault ID asynchronously
+        public async Task<CreditCard> GetCreditCardByVaultIdAsync(Guid vaultId)
+        {
+            return await _appDBContext.CreditCards.FirstOrDefaultAsync(cc => cc.VaultId == vaultId);
+        }
+
         // Add a new credit card asynchronously
         public async Task<bool> AddCreditCardAsync(CreditCard creditCard)
         {

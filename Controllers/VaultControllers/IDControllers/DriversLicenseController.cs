@@ -31,6 +31,12 @@ namespace Xrocter.Controllers.VaultControllers.IDControllers
             return await _appDBContext.DriversLicenses.FirstOrDefaultAsync(dl => dl.LicenseId == licenseId);
         }
 
+        // Retrieve driver's license by VaultId asynchronously
+        public async Task<DriversLicense> GetDriversLicenseByVaultIdAsync(Guid vaultId)
+        {
+            return await _appDBContext.DriversLicenses.FirstOrDefaultAsync(dl => dl.VaultId == vaultId);
+        }
+
         // Add a new driver's license asynchronously
         public async Task<bool> AddDriversLicenseAsync(DriversLicense driversLicense)
         {
