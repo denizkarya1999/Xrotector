@@ -1,12 +1,12 @@
-namespace Xrocter.Controllers.Processes.AuthenticationProcess
+namespace Xrocter.Controllers.Processes.PasswordRecoveryProcess
 {
-    // QuestionOne class inherits from RecoveryAssistant.
-    // It represents a specific security question for password recovery.
-    public class QuestionOne : RecoveryAssistant
+    // QuestionThree class inherits from RecoveryAssistant.
+    // It represents a third specific security question for password recovery.
+    public class QuestionThree : RecoveryAssistant
     {
-        // Constructor for QuestionOne.
+        // Constructor for QuestionThree.
         // It takes a security question and its corresponding answer, then passes them to the base class.
-        public QuestionOne(string question, string answer) : base(question, answer) {}
+        public QuestionThree(string question, string answer) : base(question, answer) { }
 
         // Overrides the RecoverPasswordAsync method from the RecoveryAssistant class.
         // This method checks if the provided answer is correct and returns a boolean result.

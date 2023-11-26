@@ -24,6 +24,14 @@ namespace Xrocter.Controllers
             return await _appDBContext.SecurityQuestions.ToListAsync();
         }
 
+        // Retrieve all security questions based on user ID
+        public async Task<List<SecurityQuestion>> GetAllSecurityQuestionsByUserIDAsync(Guid userAccountID)
+        {
+            return await _appDBContext.SecurityQuestions
+                .Where(sq => sq.UserAccountId == userAccountID)
+                .ToListAsync();
+        }
+
         // Retrieve security question by ID asynchronously
         public async Task<SecurityQuestion> GetSecurityQuestionByIdAsync(Guid id)
         {

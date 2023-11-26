@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xrocter.Controllers.Processes.AuthenticationProcess
+namespace Xrocter.Controllers.Processes.PasswordRecoveryProcess
 {
     // Abstract class RecoveryAssistant serves as a base for implementing password recovery mechanisms.
     public abstract class RecoveryAssistant

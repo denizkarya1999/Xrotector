@@ -35,7 +35,6 @@ namespace Xrocter.Views
         private void MainProgram_Load(object sender, EventArgs e)
         {
             WelcomeLabel.Text = "Welcome " + loggedInUser.Name;
-            vaultLabel.Text = loggedInUserVault.Name;
         }
 
         //Mask button setup

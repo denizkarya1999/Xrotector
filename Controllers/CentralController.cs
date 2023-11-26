@@ -10,6 +10,7 @@ using Xrocter.Controllers.Processes.AuthenticationProcess;
 using Xrocter.Controllers.Processes.PasswordGenerationProcess;
 using Xrocter.Controllers.Processes.MaskProcess;
 using System.Windows.Forms;
+using Xrocter.Controllers.Processes.PasswordRecoveryProcess;
 
 namespace Xrocter.Controllers
 {
@@ -175,6 +176,54 @@ namespace Xrocter.Controllers
                 MessageBox.Show("We successfully unmasked your vault. Please handle your data in care.");
                 return null;
             }
+        }
+
+        //Method to invoke Password Recovery process
+        public async Task<SecurityQuestion> PasswordRecoveryProcess(Guid userAccountID, string[] userAnswers)
+        {
+            // Create an instance of userAccountController
+            UserAccountController user_Controller = new UserAccountController(_dbContext);
+
+            // Get the user by ID
+            UserAccount targetUser = await user_Controller.GetUserByIdAsync(userAccountID);
+
+            // Create an instance of Security Question Controller
+            SecurityQuestionController _security_Question_Controller = new SecurityQuestionController(_dbContext);
+
+            // Get all security questions by user ID
+            List<SecurityQuestion> securityQuestions = await _security_Question_Controller.GetAllSecurityQuestionsByUserIDAsync(userAccountID);
+
+            if (securityQuestions.Count >= 3) // Assuming you have at least three questions
+            {
+                RecoveryAssistant questionOne = new QuestionOne(securityQuestions[0].Question, userAnswers[0]);
+                RecoveryAssistant questionTwo = new QuestionTwo(securityQuestions[1].Question, userAnswers[1]);
+                RecoveryAssistant questionThree = new QuestionThree(securityQuestions[2].Question, userAnswers[2]);
+
+                bool answerOne = await questionOne.RecoverPasswordAsync(securityQuestions[0].Answer);
+                bool answerTwo = await questionTwo.RecoverPasswordAsync(securityQuestions[1].Answer);
+                bool answerThree = await questionThree.RecoverPasswordAsync(securityQuestions[2].Answer);
+
+                // Handle the password recovery process based on the answers received
+                // For example:
+                if (answerOne && answerTwo && answerThree)
+                {
+                    // Show a messagebox
+                    MessageBox.Show("We reseted your password as 12345. Please generate a master password immediately.");
+
+                    // Set new password for the user
+                    targetUser.Password = "12345";
+
+                    // Update the password on database
+                    await user_Controller.UpdateUserAsync(targetUser);
+                }
+                else
+                {
+                    // Show a messagebox
+                    MessageBox.Show("Unfortunately we cannot reset your password. Please create another account.");
+                }
+            }
+
+            return null;
         }
     }
 }

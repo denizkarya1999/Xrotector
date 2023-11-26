@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Xrocter.Controllers;
 using Xrocter.Models;
+using Xrocter.Views;
 
 namespace Xrocter
 {
@@ -71,6 +73,31 @@ namespace Xrocter
         {
             // Close the program
             this.Close();
+        }
+
+        private async void PasswordRecoveryLink_LinkClickedAsync(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Get the user`s email
+            string email = Email_Login_Textbox.Text;
+
+            //Use EFcore to login
+            using (var dbContext = new AppDbContext())
+            {
+                // Create an instance of userAccountController
+                UserAccountController user_Controller = new UserAccountController(dbContext);
+
+                // Get the user by Email
+                UserAccount targetUser = await user_Controller.GetUserByEmailAsync(email);
+
+                // Initialize classes
+                PasswordRecoveryWizard passwordRecovery = new PasswordRecoveryWizard();
+
+                // Pass the parameter
+                passwordRecovery.SetLoggedInUser(targetUser);
+
+                // Show program
+                passwordRecovery.Show();
+            }
         }
     }
 }

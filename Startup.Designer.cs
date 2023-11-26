@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private async Task InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Startup));
             firstNameLabel = new Label();
@@ -40,6 +40,7 @@
             createAccountButton = new Button();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            PasswordRecoveryLink = new LinkLabel();
             login_Button = new Button();
             Password_Login_Textbox = new TextBox();
             Email_Login_Textbox = new TextBox();
@@ -152,6 +153,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(PasswordRecoveryLink);
             groupBox2.Controls.Add(login_Button);
             groupBox2.Controls.Add(Password_Login_Textbox);
             groupBox2.Controls.Add(Email_Login_Textbox);
@@ -164,11 +166,22 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Sign In";
             // 
+            // PasswordRecoveryLink
+            // 
+            PasswordRecoveryLink.AutoSize = true;
+            PasswordRecoveryLink.Location = new Point(68, 143);
+            PasswordRecoveryLink.Name = "PasswordRecoveryLink";
+            PasswordRecoveryLink.Size = new Size(127, 15);
+            PasswordRecoveryLink.TabIndex = 13;
+            PasswordRecoveryLink.TabStop = true;
+            PasswordRecoveryLink.Text = "Forgot your password?";
+            PasswordRecoveryLink.LinkClicked += PasswordRecoveryLink_LinkClickedAsync;
+            // 
             // login_Button
             // 
             login_Button.BackColor = SystemColors.ButtonFace;
             login_Button.ForeColor = SystemColors.ActiveCaptionText;
-            login_Button.Location = new Point(92, 159);
+            login_Button.Location = new Point(92, 170);
             login_Button.Name = "login_Button";
             login_Button.Size = new Size(77, 26);
             login_Button.TabIndex = 10;
@@ -179,7 +192,7 @@
             // Password_Login_Textbox
             // 
             Password_Login_Textbox.BorderStyle = BorderStyle.FixedSingle;
-            Password_Login_Textbox.Location = new Point(16, 119);
+            Password_Login_Textbox.Location = new Point(16, 107);
             Password_Login_Textbox.Name = "Password_Login_Textbox";
             Password_Login_Textbox.PasswordChar = '*';
             Password_Login_Textbox.Size = new Size(242, 23);
@@ -188,14 +201,14 @@
             // Email_Login_Textbox
             // 
             Email_Login_Textbox.BorderStyle = BorderStyle.FixedSingle;
-            Email_Login_Textbox.Location = new Point(16, 56);
+            Email_Login_Textbox.Location = new Point(16, 48);
             Email_Login_Textbox.Name = "Email_Login_Textbox";
             Email_Login_Textbox.Size = new Size(242, 23);
             Email_Login_Textbox.TabIndex = 10;
             // 
             // label2
             // 
-            label2.Location = new Point(16, 93);
+            label2.Location = new Point(16, 81);
             label2.Name = "label2";
             label2.Size = new Size(100, 23);
             label2.TabIndex = 11;
@@ -203,7 +216,7 @@
             // 
             // label1
             // 
-            label1.Location = new Point(16, 36);
+            label1.Location = new Point(16, 28);
             label1.Name = "label1";
             label1.Size = new Size(100, 23);
             label1.TabIndex = 10;
@@ -293,5 +306,6 @@
         private ToolStrip toolStrip1;
         private ToolStripSplitButton toolStripDropDownButton1;
         private ToolStripMenuItem exitToolStripMenuItem;
+        private LinkLabel PasswordRecoveryLink;
     }
 }

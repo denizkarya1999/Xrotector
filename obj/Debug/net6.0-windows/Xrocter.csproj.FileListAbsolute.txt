@@ -69,3 +69,4 @@ C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net6.0-windows\Xroc
 C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net6.0-windows\ref\Xrocter.dll
 C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net6.0-windows\Xrocter.Views.MainProgram.resources
 C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net6.0-windows\Xrocter.Views.PasswordGenerator.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net6.0-windows\Xrocter.Views.PasswordRecoveryWizard.resources

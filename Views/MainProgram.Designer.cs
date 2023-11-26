@@ -34,7 +34,6 @@
             label1 = new Label();
             generatePasswordbutton = new Button();
             WelcomeLabel = new Label();
-            vaultLabel = new Label();
             navigationPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -96,22 +95,12 @@
             WelcomeLabel.TabIndex = 1;
             WelcomeLabel.Text = "Welcome NULL";
             // 
-            // vaultLabel
-            // 
-            vaultLabel.AutoSize = true;
-            vaultLabel.Location = new Point(354, 155);
-            vaultLabel.Name = "vaultLabel";
-            vaultLabel.Size = new Size(38, 15);
-            vaultLabel.TabIndex = 2;
-            vaultLabel.Text = "label2";
-            // 
             // MainProgram
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(800, 450);
-            Controls.Add(vaultLabel);
             Controls.Add(WelcomeLabel);
             Controls.Add(navigationPanel);
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -133,6 +122,5 @@
         private Button generatePasswordbutton;
         private Label WelcomeLabel;
         private Button maskButton;
-        private Label vaultLabel;
     }
 }
