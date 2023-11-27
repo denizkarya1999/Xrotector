@@ -1,0 +1,11 @@
+C:\Users\mmuhs\source\repos\the vault\the vault\bin\Debug\the vault.exe.config
+C:\Users\mmuhs\source\repos\the vault\the vault\bin\Debug\the vault.exe
+C:\Users\mmuhs\source\repos\the vault\the vault\bin\Debug\the vault.pdb
+C:\Users\mmuhs\source\repos\the vault\the vault\obj\Debug\the vault.csproj.AssemblyReference.cache
+C:\Users\mmuhs\source\repos\the vault\the vault\obj\Debug\the vault.csproj.SuggestedBindingRedirects.cache
+C:\Users\mmuhs\source\repos\the vault\the vault\obj\Debug\the_vault.Form1.resources
+C:\Users\mmuhs\source\repos\the vault\the vault\obj\Debug\the_vault.Properties.Resources.resources
+C:\Users\mmuhs\source\repos\the vault\the vault\obj\Debug\the vault.csproj.GenerateResource.cache
+C:\Users\mmuhs\source\repos\the vault\the vault\obj\Debug\the vault.csproj.CoreCompileInputs.cache
+C:\Users\mmuhs\source\repos\the vault\the vault\obj\Debug\the vault.exe
+C:\Users\mmuhs\source\repos\the vault\the vault\obj\Debug\the vault.pdb
