@@ -16,6 +16,8 @@ namespace Xrocter.Views
 {
     public partial class MainProgram : Form
     {
+
+        private System.Windows.Forms.Timer timer;
         private UserAccount loggedInUser; // Store the logged-in user here
         private Vault loggedInUserVault; // Store the logged-in user vault here
         private bool userChoice = false; // Define the variable at the class level
@@ -45,6 +47,14 @@ namespace Xrocter.Views
                 //Call the storage management to detect any expiry date problems
                 await centralController.PasswordStorageProcess(loggedInUser.UserId, loggedInUserVault.VaultId);
             }
+
+            // Initialize and configure the timer
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 60000; // 1 minute in milliseconds
+            timer.Tick += Timer_Tick;
+
+            // Start the timer
+            timer.Start();
         }
 
         //Mask button setup
@@ -118,6 +128,27 @@ namespace Xrocter.Views
             string version = "Version: 1.0 Beta";
 
             MessageBox.Show($"{creators}\n{version}", "About Xrocter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private async void Timer_Tick(object sender, EventArgs e)
+        {
+            // Stop the timer
+            timer.Stop();
+
+            // Ask for confirmation before closing the form
+            DialogResult result = MessageBox.Show("The form will be closed due to inactivity. Do you want to continue?", "Inactive", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            // Check user's choice
+            if (result == DialogResult.Yes)
+            {
+                // Restart the timer if the user wants to continue
+                timer.Start();
+            }
+            else
+            {
+                // Close the form if the user chooses not to continue
+                this.Close();
+            }
         }
     }
 }
