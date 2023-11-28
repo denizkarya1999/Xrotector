@@ -40,6 +40,7 @@
             createAccountButton = new Button();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            button1 = new Button();
             PasswordRecoveryLink = new LinkLabel();
             login_Button = new Button();
             Password_Login_Textbox = new TextBox();
@@ -155,6 +156,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(button1);
             groupBox2.Controls.Add(PasswordRecoveryLink);
             groupBox2.Controls.Add(login_Button);
             groupBox2.Controls.Add(Password_Login_Textbox);
@@ -167,6 +169,17 @@
             groupBox2.TabIndex = 11;
             groupBox2.TabStop = false;
             groupBox2.Text = "Sign In";
+            // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.ButtonFace;
+            button1.Location = new Point(149, 168);
+            button1.Name = "button1";
+            button1.Size = new Size(82, 25);
+            button1.TabIndex = 14;
+            button1.Text = "Clipboard";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // PasswordRecoveryLink
             // 
@@ -183,7 +196,7 @@
             // 
             login_Button.BackColor = SystemColors.ButtonFace;
             login_Button.ForeColor = SystemColors.ActiveCaptionText;
-            login_Button.Location = new Point(92, 170);
+            login_Button.Location = new Point(29, 168);
             login_Button.Name = "login_Button";
             login_Button.Size = new Size(77, 26);
             login_Button.TabIndex = 10;
@@ -327,5 +340,6 @@
         private LinkLabel PasswordRecoveryLink;
         private ToolStripDropDownButton help;
         private ToolStripMenuItem aboutToolStripMenuItem;
+        private Button button1;
     }
 }
