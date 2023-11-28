@@ -107,5 +107,11 @@ namespace Xrocter
 
             MessageBox.Show($"{creators}\n{version}", "About Xrocter", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+        }
     }
 }

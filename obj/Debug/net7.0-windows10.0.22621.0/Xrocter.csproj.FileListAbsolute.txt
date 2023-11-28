@@ -1,0 +1,15 @@
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\Xrocter.csproj.AssemblyReference.cache
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\MyPass.Login.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\MyPass.Main.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\Xrocter.Documentation.Forms.UI_design.Properties.Resources.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\MyPass.signUp.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\the_vault.Form1.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\Xrocter.Documentation.Forms.vaultfiles.the_vault.Properties.Resources.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\Xrocter.Properties.Resources.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\Xrocter.Startup.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\Xrocter.Views.MainProgram.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\Xrocter.Views.PasswordGenerator.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\Xrocter.Views.PasswordRecoveryWizard.resources
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\Xrocter.csproj.GenerateResource.cache
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\Xrocter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\deniz\source\Project_Architecture\Xrocter\obj\Debug\net7.0-windows10.0.22621.0\Xrocter.csproj.CoreCompileInputs.cache
